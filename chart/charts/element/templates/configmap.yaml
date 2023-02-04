@@ -9,7 +9,7 @@ data:
     {
         "default_server_config": {
           "m.homeserver": {
-                "base_url": "https://{{ .Values.global.homeserver.baseUrl }}",
+                "base_url": "{{ .Values.global.homeserver.baseUrl }}",
                 "server_name": "{{ .Values.global.homeserver.serverName }}",
             },
             "m.identity_server": {
