@@ -6,7 +6,7 @@ metadata:
     {{- include "synapse.labels" . | nindent 4 }}
 data:
   homeserver.yaml: |
-    server_name: {{ .Values.global.homeserver.serverName }}
+    server_name: {{ .Values.global.homeserver.serverName | default .Values.global.homeserver.baseUrl }}
     pid_file: /data/homeserver.pid
     listeners:
       - port: 8008
