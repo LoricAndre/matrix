@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "element.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.service.type | default "ClusterIp" }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: http

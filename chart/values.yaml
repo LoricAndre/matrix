@@ -1,20 +1,7 @@
+global:
+  homeserver:
+    baseUrl: matrix.loricandre.cloud.okteto.net
 synapse:
-  serverName: matrix.loricandre.cloud.okteto.net
-  ingress:
-    hosts:
-      - host: matrix.loricandre.cloud.okteto.net
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
+  enableRegistration: true
 element:
-  defaultServerConfig:
-    "m.homeserver":
-      base_url: matrix.loricandre.cloud.okteto.net
-    "m.identity_server":
-      base_url: https://vector.im
-  ingress:
-    hosts:
-      - host: element.loricandre.cloud.okteto.net
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
+  host: element.loricandre.cloud.okteto.net

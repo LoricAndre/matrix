@@ -6,7 +6,7 @@ metadata:
     {{- include "synapse.labels" . | nindent 4 }}
 data:
   homeserver.yaml: |
-    server_name: {{ .Values.global.serverName | default .Values.homeserver.serverName }}
+    server_name: {{ .Values.global.homeserver.serverName }}
     pid_file: /data/homeserver.pid
     listeners:
       - port: 8008
@@ -16,6 +16,7 @@ data:
         resources:
           - names: [client, federation]
             compress: false
+    enable_registration: {{ .Values.enableRegistration }}
     database:
       name: sqlite3
       args:
