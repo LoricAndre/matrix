@@ -16,7 +16,6 @@ data:
         resources:
           - names: [client, federation]
             compress: false
-    enable_registration: {{ .Values.enableRegistration }}
     database:
       name: sqlite3
       args:
@@ -30,6 +29,7 @@ data:
     signing_key_path: "/config/signing.key"
     trusted_key_servers:
       - server_name: "synapse.org"
+    {{ toYaml .Values.extraConfig | nindent 4 }}
   log.config: |
     version: 1
     formatters:

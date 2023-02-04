@@ -3,6 +3,8 @@ global:
     baseUrl: https://matrix.loricandre.cloud.okteto.net
     serverName: loricandre.cloud.okteto.net
 synapse:
-  enableRegistration: true
+  extraConfig:
+    enable_registration: true
+    enable_registration_without_verification: true
 element:
   host: element.loricandre.cloud.okteto.net
