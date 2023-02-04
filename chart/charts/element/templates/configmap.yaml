@@ -10,7 +10,7 @@ data:
         "default_server_config": {
           "m.homeserver": {
                 "base_url": "{{ .Values.global.homeserver.baseUrl }}",
-                "server_name": "{{ .Values.global.homeserver.serverName }}",
+                "server_name": "{{ .Values.global.homeserver.serverName }}"
             },
             "m.identity_server": {
                 "base_url": "https://vector.im"
