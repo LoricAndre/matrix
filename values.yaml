@@ -1,0 +1,6 @@
+synapse:
+  serverName: matrix.local
+element:
+  homeserver:
+    baseUrl: matrix-element
+    serverName: matrix-element

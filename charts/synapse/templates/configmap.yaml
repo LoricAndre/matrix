@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "synapse.fullname" . }}
+  labels:
+    {{- include "synapse.labels" . | nindent 4 }}
+data:
+  homeserver.yaml: |
+    server_name: {{ .Values.global.serverName | default .Values.homeserver.serverName }}
+    pid_file: /data/homeserver.pid
+    listeners:
+      - port: 8008
+        tls: false
+        type: http
+        x_forwarded: true
+        resources:
+          - names: [client, federation]
+            compress: false
+    database:
+      name: sqlite3
+      args:
+        database: /data/homeserver.db
+    log_config: "/config/log.config"
+    media_store_path: /data/media_store
+    registration_shared_secret: "yWimmGrsFlQyD;#h1VOBqDnqWdUiFfbhE7Ym@+uG@nb:5HkX37"
+    report_stats: true
+    macaroon_secret_key: "PJkKeCXr2QNFV_JsslvZ3;:^w,gsheh*rnh&jGG87SYOf4Um=m"
+    form_secret: "MzVs=IcsbGLfhO@;+v3huoP0SE95Piy~t+aCKju9:qBr1JnART"
+    signing_key_path: "/config/signing.key"
+    trusted_key_servers:
+      - server_name: "synapse.org"
+  log.config: |
+    version: 1
+    formatters:
+      precise:
+        format: '%(asctime)s - %(name)s - %(lineno)d - %(levelname)s - %(request)s - %(message)s'
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: precise
+    loggers:
+        synapse.storage.SQL:
+            # beware: increasing this to DEBUG will make synapse log sensitive
+            # information such as access tokens.
+            level: INFO
+    root:
+        level: INFO
+        handlers: [console]
+    disable_existing_loggers: false
