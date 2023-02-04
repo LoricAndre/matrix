@@ -1,6 +1,6 @@
 global:
   homeserver:
-    baseUrl: https://matrix.loricandre.cloud.okteto.net
+    baseUrl: matrix.loricandre.cloud.okteto.net
     serverName: loricandre.cloud.okteto.net
 synapse:
   extraConfig:
